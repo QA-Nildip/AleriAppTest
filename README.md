@@ -1,5 +1,5 @@
-## Python-Pytest-Selenium
-![LambdaTest Logo](https://www.lambdatest.com/static/images/logo.svg)
+## Aleri App Testing with Python-Pytest-Selenium
+<img alt="ALERI" src="https://aleri.ca/static/media/tod.50189a1b.svg"  width="20" height="20" /> <a>ALERI</a>
 
 ### Environment Setup
 
@@ -11,20 +11,7 @@
     ```
     * Install [pip](https://pip.pypa.io/en/stable/installing/) for package installation
 
-2. LambdaTest Credentials
-    * In the terminal export your LambdaTest Credentials as environmental variables:
-        - For Macos & Linux
-            ```
-            $ export LT_USERNAME=<your LambdaTest username>
-            $ export LT_ACCESS_KEY=<your LambdaTest access key>
-            ```
-        - Windows
-            ```
-            $ set LT_USERNAME=<your LambdaTest username>
-            $ set LT_ACCESS_KEY=<your LambdaTest access key>
-            ```
-
-3. Project
+2. Project
 	* The recommended way to run your tests would be in [virtualenv](https://virtualenv.readthedocs.org/en/latest/). It will isolate the build from other setups you may have running and ensure that the tests run with the specified versions of the modules specified in the requirements.txt file.
 
 	```bash
@@ -47,17 +34,23 @@
     pip install -r requirements.txt
     ```
 
-### Running Tests:  -n option designates number of parallel tests and -s to disable output capture.
+### Running Tests:  
+---
+```-v``` will give you verbose output of the test while if you want the test results then you should use the ```--alluredir=/tmp/my_allure_results```
 
-*  Tests in Parallel:
+*  To execute test:
 
     ```bash
-    pytest -s -n 2  tests\lt_sample_todo.py
+    pytest -v Tests\login_test.py --alluredir=Reports/test
     ```
 
+*  To generate report:
 
-To use Pytest with LambdaTest, make sure you have the 2 environment variables LT_USERNAME and LT_ACCESS_KEY set. To obtain a username and access_key, sign up for free [here](https://lambdatest.com)).
-
+    ```bash
+    allure serve Reports/test/
+    ```
+    
+Make sure that you configure your interpreter pointing towards created virtual environment.
 #####  Routing traffic through your local machine
 - Set tunnel value to `True` in test capabilities
 > OS specific instructions to download and setup tunnel binary can be found at the following links.
